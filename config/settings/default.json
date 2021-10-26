@@ -1,0 +1,15 @@
+{
+  "project": {
+    "owner": "GrowThat Digital Agency, LLC.",
+    "name": "template",
+    "organization": "growthatco",
+    "repository": "https://github.com/growthatco/template",
+    "version": "0.0.0",
+    "nixpkgs_channel": "nixos-21.05"
+  },
+  "direnv": {
+    "log": {
+      "format": ""
+    }
+  }
+}
