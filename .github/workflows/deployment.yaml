@@ -30,8 +30,8 @@ jobs:
 
       - name: Release
         env:
-          GH_TOKEN: ${{ secrets.GROWTHAT_BOT_TOKEN || github.token }}
-          GITHUB_TOKEN: ${{ secrets.GROWTHAT_BOT_TOKEN || github.token }}
+          GH_TOKEN: ${{ (secrets.GROWTHAT_BOT_TOKEN || github.token) }}
+          GITHUB_TOKEN: ${{ (secrets.GROWTHAT_BOT_TOKEN || github.token) }}
           GIT_AUTHOR_NAME: ${{ secrets.GROWTHAT_BOT_NAME }}
           GIT_AUTHOR_EMAIL: ${{ secrets.GROWTHAT_BOT_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GROWTHAT_BOT_NAME }}
