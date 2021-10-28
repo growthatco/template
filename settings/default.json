@@ -1,0 +1,16 @@
+{
+  "direnv": {
+    "log": {
+      "format": ""
+    }
+  },
+  "init": true,
+  "project": {
+    "owner": "GrowThat Digital Agency, LLC.",
+    "name": "template",
+    "organization": "growthatco",
+    "repository": "https://github.com/growthatco/template",
+    "version": "1.0.0",
+    "nixpkgs_channel": "nixos-21.05"
+  }
+}

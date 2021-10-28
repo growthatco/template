@@ -1,0 +1,54 @@
+---
+# Configuration file for Mega-Linter
+# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+
+ENABLE_LINTERS:
+  - BASH_SHELLCHECK
+  - BASH_SHFMT
+  - COPYPASTE_JSCPD
+  - CREDENTIALS_SECRETLINT
+  - JSON_PRETTIER
+  - NIX_NIXPKGS_FMT
+  - PYTHON_BLACK
+  - SPELL_CSPELL
+  - YAML_PRETTIER
+  - YAML_YAMLLINT
+
+PLUGINS:
+  - https://raw.githubusercontent.com/growthatco/mega-linter-plugins/main/plugins/mega-linter-plugin-nixpkgs-fmt/nixpkgs-fmt.megalinter-descriptor.yml
+
+DEFAULT_BRANCH: main
+FLAVOR_SUGGESTIONS: false
+IGNORE_GENERATED_FILES: true
+IGNORE_GITIGNORED_FILES: true
+PRINT_ALPACA: false
+SHOW_ELAPSED_TIME: true
+SHOW_SKIPPED_LINTERS: false
+VALIDATE_ALL_CODEBASE: true
+
+BASH_SHELLCHECK_FILE_EXTENSIONS:
+  - .bash
+  - .sh
+
+BASH_SHFMT_FILE_EXTENSIONS:
+  - .bash
+  - .envrc
+  - .sh
+
+EXCLUDED_DIRECTORIES:
+  - .direnv
+  - modules
+
+SPELL_CSPELL_ARGUMENTS: --no-must-find-files
+
+# Reporters
+# See all available variables at https://nvuillam.github.io/mega-linter/reporters/
+CONFIG_REPORTER: true
+EMAIL_REPORTER: false
+FILEIO_REPORTER: false
+GITHUB_COMMENT_REPORTER: false
+GITHUB_STATUS_REPORTER: false
+JSON_REPORTER: false
+TAP_REPORTER: false
+TEXT_REPORTER: true
+UPDATED_SOURCES_REPORTER: false

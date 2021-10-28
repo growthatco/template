@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+
+exec < /dev/tty && npx --no-install cz --hook || true

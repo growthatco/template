@@ -1,0 +1,26 @@
+{
+  "gitignore": true,
+  "ignore": [
+    "**/node_modules/**",
+    "**/report/**",
+    "**/.direnv/**",
+    "**/.git/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/.rbenv/**",
+    "**/.venv'/**",
+    "**/*cache*/**",
+    "**/*.svg",
+    "**/.cspell.json",
+    "**/.jscpd.json",
+    "**/.prettierignore",
+    "**/.prettierrc.yaml",
+    "**/.secretlintignore",
+    "**/.secretlintrc.json",
+    "**/.secretlintignore",
+    "**/.yamllint.yaml"
+  ],
+  "output": "./tmp/report",
+  "reporters": ["html", "markdown"],
+  "threshold": 0
+}
