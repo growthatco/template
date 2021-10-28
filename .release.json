@@ -14,7 +14,7 @@
       {
         "replacements": [
           {
-            "files": ["config/settings/default.json"],
+            "files": ["settings/default.json"],
             "from": "\"version\": \".*\"",
             "to": "\"version\": \"${nextRelease.version}\"",
             "countMatches": true
@@ -31,7 +31,7 @@
     [
       "@semantic-release/git",
       {
-        "assets": ["CHANGELOG.md", "config/settings/default.json"]
+        "assets": ["CHANGELOG.md", "pyproject.toml", "settings/default.json"]
       }
     ],
     "@semantic-release/github"

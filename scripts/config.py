@@ -6,7 +6,7 @@ from scripts.lib import file as xfile
 
 def generate_config(rootdir, stage="development"):
     # Settings directory
-    settingsdir = os.path.join(rootdir, "config", "settings")
+    settingsdir = os.path.join(rootdir, "settings")
 
     # Combine the default, project stage, and tool version settings
     # into a global configuration file: .env.json.
@@ -48,9 +48,7 @@ def generate_config(rootdir, stage="development"):
     settings_env_str = xenv.json2env(settings_json_str)
     settings_env_path = os.path.join(rootdir, ".env")
     if os.path.exists(settings_env_path):
-        xfile.overwrite(settings_env_path, settings_env_str.replace("-", "_"))
-
-        xfile.overwrite(settings_env_path, settings_env_str.replace("-", "_"))
+        xfile.overwrite(settings_env_path, settings_env_str)
 
 
 if __name__ == "__main__":

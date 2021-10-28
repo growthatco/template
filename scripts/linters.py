@@ -3,7 +3,7 @@ import os, shutil, sys
 
 def generate_linters(rootdir):
     # The absolute path to the project's linter configurations
-    lintersdir = os.path.join(rootdir, "config", "linters")
+    lintersdir = os.path.join(rootdir, "linters")
 
     # A list of a destination directories to copy the linters to
     destdirs = [rootdir, os.path.join(rootdir, ".github", "linters")]

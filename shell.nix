@@ -17,6 +17,8 @@ nixpkgs.mkShell rec {
     growthatpkgs.python
     growthatpkgs.rnix-lsp
     growthatpkgs.shfmt
+    # <nixpkgs>
+    nixpkgs.gitflow
   ];
   shellHook = ''
     unset PYTHONPATH
