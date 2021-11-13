@@ -49,6 +49,8 @@ def generate_config(rootdir, stage="development"):
     settings_env_path = os.path.join(rootdir, ".env")
     if os.path.exists(settings_env_path):
         xfile.overwrite(settings_env_path, settings_env_str)
+    else:
+        xfile.write(settings_env_path, settings_env_str)        
 
 
 if __name__ == "__main__":
