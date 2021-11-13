@@ -10,7 +10,7 @@
     "name": "template",
     "organization": "growthatco",
     "repository": "https://github.com/growthatco/template",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "nixpkgs_channel": "nixos-21.05"
   }
 }
