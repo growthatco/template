@@ -7,6 +7,7 @@ from invoke.config import Config
 from scripts import config
 from scripts import fingerprint
 from scripts import linters
+from scripts.lib import file as xfile
 from scripts.lib import string as xstring
 
 # Get the current working directory for the root of the project.
@@ -18,7 +19,7 @@ rootdir = pathlib.Path.cwd()
 
 cfgpath = os.path.join(rootdir, ".env.yaml")
 
-if not os.path.isfile(cfgpath):
+if not os.path.isfile(cfgpath) and os.environ.get("INIT") == "True":
     config.generate_config(rootdir)
 
 cfg = Config({"stage": "development"})
@@ -245,19 +246,38 @@ init_col.add_task(init_git)
 
 
 # init.tree
-@task(pre=[_refresh], name="tree")
+@task(post=[_refresh], name="tree")
 def init_tree(context):
     """
     Create any files / directories required prior to development.
     """
+    # Misc. directories
     tmpdir = os.path.join(rootdir, "tmp")
     fingerprintdir = os.path.join(tmpdir, "fingerprint")
     reportdir = os.path.join(tmpdir, "report")
 
-    dirs = [tmpdir, fingerprintdir, reportdir]
+    dirs = [
+        {"path": tmpdir},
+        {"path": fingerprintdir},
+        {"path": reportdir},
+    ]
 
     for dir in dirs:
-        pathlib.Path(dir).mkdir(parents=True, exist_ok=True)
+        pathlib.Path(dir["path"]).mkdir(parents=True, exist_ok=True)
+
+    # Settings files
+    development_settings = os.path.join(rootdir, "settings", "development.json")
+    staging_settings = os.path.join(rootdir, "settings", "staging.json")
+    production_settings = os.path.join(rootdir, "settings", "production.json")
+
+    settings_files = [
+        {"path": development_settings, "stage": "development"},
+        {"path": staging_settings, "stage": "staging"},
+        {"path": production_settings, "stage": "production"},
+    ]
+
+    for file in settings_files:
+        xfile.overwrite(file["path"], f'{{"stage": "{file["stage"]}"}}')
 
 
 init_col.add_task(init_tree)
@@ -266,7 +286,7 @@ init_col.add_task(init_tree)
 # === Update ===
 
 # update.all
-@task(pre=[_refresh], default=True, name="all")
+@task(post=[_refresh], default=True, name="all")
 def update(context):
     """
     Run all `update` tasks.
@@ -281,7 +301,7 @@ ns.add_collection(update_col)
 
 
 # update.niv
-@task(pre=[_refresh], name="niv")
+@task(post=[_refresh], name="niv")
 def update_niv(context):
     """
     Update niv dependencies.
